@@ -28,9 +28,9 @@
         hyper = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./nixos/mod.nix
-            ./nixos/hosts/hyper.nix
+            ./nixos/common.nix
             ./nixos/hardware/hyper.nix
+            ./nixos/hosts/hyper.nix
           ];
         };
 
@@ -40,34 +40,37 @@
           modules = [
             nixos-hardware.nixosModules.common-pc-laptop
             nixos-hardware.nixosModules.lenovo-thinkpad-x270
-            ./nixos/mod.nix
-            ./nixos/hosts/x270.nix
+            ./nixos/common.nix
             ./nixos/hardware/x270.nix
+            ./nixos/hosts/x270.nix
+
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.gecko = import ./home/gecko.nix;
+            # }
           ];
         };
-
       };
 
       # User configurations
       homeConfigurations = {
+         # Normal user
+         gecko = home-manager.lib.homeManagerConfiguration {
+           pkgs = import nixpkgs {
+             system = "x86_64-linux";
+             config.allowUnfree = true;
+           };
 
-        # Normal user
-        gecko = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
+           extraSpecialArgs = {
+             inherit inputs;
+           };
 
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./home/mod.nix
-          ];
-        };
-
+           modules = [
+             ./home/gecko.nix
+           ];
+         };
       };
-
     };
 }

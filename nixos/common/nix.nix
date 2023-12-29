@@ -1,7 +1,9 @@
 {
   nix = {
+
     # Nix settings
     settings = {
+
       # Optimize nix store
       auto-optimise-store = true;
 

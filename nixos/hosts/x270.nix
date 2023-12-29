@@ -15,4 +15,8 @@
 
   # Platform
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  # Firewall
+  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ ];
 }

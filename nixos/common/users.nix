@@ -15,17 +15,6 @@
         "networkmanager"
         "wheel"
       ];
-
-      # TODO: Migrate to homemanager
-      packages = with pkgs; [
-        vscode
-        google-chrome
-        wezterm
-
-        # Nix tools
-        nixpkgs-fmt
-        rnix-lsp
-      ];
     };
   };
 }
