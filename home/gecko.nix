@@ -12,6 +12,10 @@
     stateVersion = "23.11";
   };
 
+  home.sessionVariables = rec {
+    DO_NOT_TRACK = 1;
+  };
+
   # Additional packages
   home.packages = with pkgs; [
 
@@ -20,12 +24,14 @@
     google-chrome
     wezterm
 
-    # CLI
-    gh
+    # Tools
+    htop
     ghq
-    rtx
+    go-task
 
     # Develop
+    devbox
+    rtx
     deno
 
     # Nix tools
@@ -33,7 +39,36 @@
     rnix-lsp
   ];
 
+  # Programs config
   programs = {
+
+    # Enable home-manager.
     home-manager.enable = true;
+
+    # Configure Git and GHQ
+    git = {
+      enable = true;
+      config = {
+        credential = {
+          "https://github.com" = {
+            helper = "!gh auth git-credential";
+          };
+        };
+        credential = {
+          "https://gist.github.com" = {
+            helper = "!gh auth git-credential";
+          };
+        };
+        ghq = {
+          "root" = "~/repo";
+        };
+      };
+    };
+
+    # Configure GitHub CLI
+    gh = {
+      enable = true;
+      gitCredentialHelper.enable = false;
+    };
   };
 }

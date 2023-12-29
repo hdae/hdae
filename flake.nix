@@ -43,34 +43,27 @@
             ./nixos/common.nix
             ./nixos/hardware/x270.nix
             ./nixos/hosts/x270.nix
-
-            # home-manager.nixosModules.home-manager
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users.gecko = import ./home/gecko.nix;
-            # }
           ];
         };
       };
 
       # User configurations
       homeConfigurations = {
-         # Normal user
-         gecko = home-manager.lib.homeManagerConfiguration {
-           pkgs = import nixpkgs {
-             system = "x86_64-linux";
-             config.allowUnfree = true;
-           };
+        # Normal user
+        gecko = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
 
-           extraSpecialArgs = {
-             inherit inputs;
-           };
+          extraSpecialArgs = {
+            inherit inputs;
+          };
 
-           modules = [
-             ./home/gecko.nix
-           ];
-         };
+          modules = [
+            ./home/gecko.nix
+          ];
+        };
       };
     };
 }
