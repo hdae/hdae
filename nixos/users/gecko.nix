@@ -11,7 +11,7 @@
         "networkmanager"
         "wheel"
       ];
-      
+
       # 
       packages = with pkgs; [
         vscode

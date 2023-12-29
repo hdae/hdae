@@ -8,7 +8,7 @@
       # Features
       experimental-features = [
         "nix-command"
-        "flakes" 
+        "flakes"
       ];
     };
 

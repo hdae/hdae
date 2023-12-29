@@ -1,5 +1,5 @@
 {
-  # Open ports in the firewall.
+  # Firewall
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
 }

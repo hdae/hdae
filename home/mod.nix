@@ -1,5 +1,5 @@
 {
   imports = [
-    ./users/gecko.nix
+    ./gecko.nix
   ];
 }

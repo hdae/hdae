@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo nixos-rebuild switch --flake .#hyper
+sudo nixos-rebuild test --flake ".#${HOST}"
