@@ -49,6 +49,7 @@
 
       # User configurations
       homeConfigurations = {
+        
         # Normal user
         gecko = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {

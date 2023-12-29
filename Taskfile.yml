@@ -1,0 +1,31 @@
+version: '3'
+
+vars:
+
+  HOST:
+    sh: hostname
+
+  USER:
+    sh: whoami
+
+tasks:
+
+  gc:
+    cmds:
+      - sudo nix store gc
+
+  system.test:
+    cmds:
+      - sudo nixos-rebuild --flake .#{{.HOST}} test
+
+  system.switch:
+    cmds:
+      - sudo nixos-rebuild --flake .#{{.HOST}} switch
+
+  home.build:
+    cmds:
+      - home-manager --flake ~/hdae#gecko build
+
+  home.switch:
+    cmds:
+      - home-manager --flake ~/hdae#gecko switch

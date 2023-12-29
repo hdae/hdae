@@ -24,6 +24,10 @@
     google-chrome
     wezterm
 
+    # Fonts
+    hack-font
+    ibm-plex
+
     # Tools
     htop
     ghq
@@ -48,6 +52,7 @@
     # Configure Git and GHQ
     git = {
       enable = true;
+
       extraConfig = {
         credential = {
           "https://github.com" = {
