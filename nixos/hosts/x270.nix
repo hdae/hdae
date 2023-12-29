@@ -3,7 +3,13 @@
 {
   imports = [ ];
 
-  # Network
+  # Use zen kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  # Fix iwlwifi issue, see: https://github.com/NixOS/nixpkgs/issues/85377
+  hardware.enableRedistributableFirmware = true;
+
+  # Networking
   networking.hostName = "x270";
   networking.useDHCP = lib.mkDefault true;
 

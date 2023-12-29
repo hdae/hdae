@@ -12,11 +12,6 @@
     xkbVariant = "";
   };
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = true;
-  };
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 

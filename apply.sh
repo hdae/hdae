@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo nixos-rebuild test --flake ".#${HOST}"
+sudo nixos-rebuild --flake ".#${HOST}" switch && reboot
