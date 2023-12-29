@@ -48,7 +48,7 @@
     # Configure Git and GHQ
     git = {
       enable = true;
-      config = {
+      extraConfig = {
         credential = {
           "https://github.com" = {
             helper = "!gh auth git-credential";
