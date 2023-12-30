@@ -12,7 +12,9 @@
     stateVersion = "23.11";
   };
 
+  # 
   home.sessionVariables = rec {
+    # 
     DO_NOT_TRACK = 1;
   };
 
@@ -20,6 +22,7 @@
   home.packages = with pkgs; [
 
     # Applications
+    discord
     vscode
     google-chrome
     wezterm
@@ -54,6 +57,10 @@
       enable = true;
 
       extraConfig = {
+        user = {
+          name = "Hedudae";
+          email = "98353469+hdae@users.noreply.github.com";
+        };
         credential = {
           "https://github.com" = {
             helper = "!gh auth git-credential";

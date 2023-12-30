@@ -12,7 +12,12 @@ tasks:
 
   gc:
     cmds:
-      - sudo nix store gc
+      - nix store gc
+      - sudo nix-collect-garbage
+
+  update:
+    cmds:
+      - nix flake update
 
   system.test:
     cmds:
@@ -24,8 +29,8 @@ tasks:
 
   home.build:
     cmds:
-      - home-manager --flake ~/hdae#gecko build
+      - home-manager --flake .#gecko build
 
   home.switch:
     cmds:
-      - home-manager --flake ~/hdae#gecko switch
+      - home-manager --flake .#gecko switch
