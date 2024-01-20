@@ -1,15 +1,8 @@
-{ pkgs, ... }:
-
 {
   virtualisation = {
-    podman = {
+    docker = {
       enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-
-      extraPackages = with pkgs; [
-        podman-desktop
-      ];
+      enableOnBoot = true;
     };
   };
 }

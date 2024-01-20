@@ -34,6 +34,6 @@
     nvidiaSettings = true;
   };
 
-  # Nvidia podman
-  virtualisation.podman.enableNvidia = true;
+  # Nvidia container
+  virtualisation.docker.enableNvidia = true;
 }
