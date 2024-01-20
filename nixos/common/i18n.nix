@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
@@ -18,6 +19,7 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
+  # Fonts
   fonts = {
     packages = with pkgs; [
       noto-fonts-cjk-serif
@@ -35,5 +37,14 @@
         emoji = [ "Noto Color Emoji" ];
       };
     };
+  };
+
+  # IME
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
   };
 }
