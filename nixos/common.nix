@@ -6,5 +6,6 @@
     ./common/services.nix
     ./common/system.nix
     ./common/users.nix
+    ./common/virtualisation.nix
   ];
 }
