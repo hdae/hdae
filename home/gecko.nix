@@ -23,7 +23,7 @@
 
     # Applications
     discord
-    vscode
+    vscode-fhs
     google-chrome
     wezterm
 
