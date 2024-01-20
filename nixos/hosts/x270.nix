@@ -1,7 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ];
 
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;

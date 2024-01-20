@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  
+
   # System
   system.stateVersion = "23.11";
 

@@ -1,7 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ];
 
   # Networking
   networking.hostName = "hyper";
