@@ -45,6 +45,20 @@
             ./nixos/hosts/x270.nix
           ];
         };
+
+        # trx
+        trx = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-intel
+            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+            ./nixos/common.nix
+            ./nixos/hardware/trx.nix
+            ./nixos/hosts/trx.nix
+          ];
+        };
       };
 
       # User configurations
