@@ -19,18 +19,29 @@ tasks:
     cmds:
       - nix flake update
 
-  system.test:
+  test.system:
     cmds:
       - sudo nixos-rebuild --flake .#{{.HOST}} test
 
-  system.switch:
+  build.system:
+    cmds:
+      - sudo nixos-rebuild --flake .#{{.HOST}} build
+
+  switch.system:
     cmds:
       - sudo nixos-rebuild --flake .#{{.HOST}} switch
 
-  home.build:
+  build.home:
     cmds:
       - home-manager --flake .#gecko build
 
-  home.switch:
+  switch.home:
     cmds:
       - home-manager --flake .#gecko switch
+
+  switch.all:
+    deps: [update]
+    cmds: 
+      - task: switch.system
+      - task: switch.home
+      - task: gc
