@@ -1,5 +1,6 @@
 {
   imports = [
+    ./common/appimage.nix
     ./common/i18n.nix
     ./common/nix.nix
     ./common/programs.nix
