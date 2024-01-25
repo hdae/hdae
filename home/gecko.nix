@@ -38,8 +38,9 @@
 
     # Develop
     devbox
-    rtx
+    # rtx
     deno
+    volta
 
     # Nix tools
     nixpkgs-fmt
