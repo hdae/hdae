@@ -12,9 +12,13 @@
     stateVersion = "23.11";
   };
 
+  home.sessionPath = [
+    "$HOME/.volta/bin"
+  ];
+
   # 
   home.sessionVariables = rec {
-    # 
+    # devbox
     DO_NOT_TRACK = 1;
   };
 
