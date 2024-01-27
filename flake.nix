@@ -1,7 +1,10 @@
 {
   inputs = {
+
     # NixOS
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    # NixOS Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # Home Manager
@@ -23,16 +26,6 @@
 
       # NixOS Configurations
       nixosConfigurations = {
-
-        # Hyper-V
-        hyper = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./nixos/common.nix
-            ./nixos/hardware/hyper.nix
-            ./nixos/hosts/hyper.nix
-          ];
-        };
 
         # x270
         x270 = nixpkgs.lib.nixosSystem {
@@ -63,7 +56,7 @@
 
       # User configurations
       homeConfigurations = {
-        
+
         # Normal user
         gecko = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
