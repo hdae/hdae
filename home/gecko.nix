@@ -18,6 +18,7 @@
 
   # 
   home.sessionVariables = rec {
+
     # devbox
     DO_NOT_TRACK = 1;
   };
@@ -42,7 +43,6 @@
 
     # Develop
     devbox
-    # rtx
     deno
     volta
 
@@ -66,16 +66,6 @@
           name = "Hedudae";
           email = "98353469+hdae@users.noreply.github.com";
         };
-        credential = {
-          "https://github.com" = {
-            helper = "!gh auth git-credential";
-          };
-        };
-        credential = {
-          "https://gist.github.com" = {
-            helper = "!gh auth git-credential";
-          };
-        };
         ghq = {
           "root" = "~/repo";
         };
@@ -85,7 +75,6 @@
     # Configure GitHub CLI
     gh = {
       enable = true;
-      gitCredentialHelper.enable = false;
     };
   };
 }
