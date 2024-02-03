@@ -52,6 +52,19 @@
             ./nixos/hosts/trx.nix
           ];
         };
+
+        # srv01
+        srv01 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-cpu-amd
+            nixos-hardware.nixosModules.common-gpu-amd
+            ./nixos/common.nix
+            ./nixos/hardware/srv01.nix
+            ./nixos/hosts/srv01.nix
+          ];
+        };
       };
 
       # User configurations
