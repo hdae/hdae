@@ -15,11 +15,11 @@
     ../users/gecko.nix
   ];
 
-  # Use zen kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
   # Hostname
   networking.hostName = "x270";
+
+  # Use zen kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Platform
   nixpkgs.hostPlatform = "x86_64-linux";
@@ -27,7 +27,4 @@
   # Firewall
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
-
-  # Fix iwlwifi issue, see: https://github.com/NixOS/nixpkgs/issues/85377
-  hardware.enableRedistributableFirmware = true;
 }

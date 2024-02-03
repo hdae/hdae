@@ -14,11 +14,18 @@
     ../users/gecko.nix
   ];
 
+  # Hostname
+  networking.hostName = "srv01";
+
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Platform
+  nixpkgs.hostPlatform = "x86_64-linux";
+
   # Networking
-  networking.hostName = "srv01";
+  networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ ];
   networking.useDHCP = false;
   networking.interfaces.enp9s0 = {
     useDHCP = false;
@@ -30,13 +37,6 @@
   };
   networking.defaultGateway = "10.10.1.1";
   networking.nameservers = [ "10.10.1.1" ];
-
-  # Platform
-  nixpkgs.hostPlatform = "x86_64-linux";
-
-  # Firewall
-  networking.firewall.allowedTCPPorts = [ ];
-  networking.firewall.allowedUDPPorts = [ ];
 
   # OpenSSH
   services.openssh = {

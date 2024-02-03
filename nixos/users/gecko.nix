@@ -5,7 +5,7 @@
     # Zsh with starship.
     shell = pkgs.zsh;
 
-    # Create as real-user.
+    # Create as real user.
     isNormalUser = true;
 
     # Join group.
@@ -14,7 +14,7 @@
       "wheel"
       "video"
       "docker"
-      "dialout"
+      "dialout" # Allow access serial port
     ];
 
     # Public key.

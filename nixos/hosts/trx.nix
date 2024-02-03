@@ -15,14 +15,11 @@
     ../users/gecko.nix
   ];
 
+  # Hostname
+  networking.hostName = "trx";
+
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  # Fix iwlwifi issue, see: https://github.com/NixOS/nixpkgs/issues/85377
-  # hardware.enableRedistributableFirmware = true;
-
-  # Networking
-  networking.hostName = "trx";
 
   # Platform
   nixpkgs.hostPlatform = "x86_64-linux";
