@@ -8,7 +8,6 @@
     # Features
     ../features/base.nix
     ../features/docker.nix
-    ../features/gui.nix
     ../features/programs.nix
 
     # Users

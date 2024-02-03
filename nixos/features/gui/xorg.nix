@@ -11,8 +11,10 @@
     desktopManager.budgie.enable = true;
 
     # Keyboard Layout
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
 
     # Mouse and Touchpad
     libinput.mouse = {
