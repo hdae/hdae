@@ -10,7 +10,7 @@
   # Minimal programs for system management.
   programs = {
 
-    # My favorite things.
+    # My favorite tools.
     git.enable = true;
     starship.enable = true;
     zsh.enable = true;

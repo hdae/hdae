@@ -49,6 +49,9 @@
     # Nix tools
     nixpkgs-fmt
     rnix-lsp
+
+    kitty
+    wofi
   ];
 
   # Programs config

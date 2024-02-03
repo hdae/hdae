@@ -1,6 +1,19 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
+  imports = [
+    # Hardware
+    ../hardwares/trx.nix
+
+    # Features
+    ../features/base.nix
+    ../features/docker.nix
+    ../features/gui.nix
+    ../features/programs.nix
+
+    # Users
+    ../users/gecko.nix
+  ];
 
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -10,10 +23,9 @@
 
   # Networking
   networking.hostName = "trx";
-  networking.useDHCP = lib.mkDefault true;
 
   # Platform
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ ];

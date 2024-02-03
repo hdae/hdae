@@ -33,8 +33,6 @@
           modules = [
             nixos-hardware.nixosModules.common-pc-laptop
             nixos-hardware.nixosModules.lenovo-thinkpad-x270
-            ./nixos/common.nix
-            ./nixos/hardware/x270.nix
             ./nixos/hosts/x270.nix
           ];
         };
@@ -47,8 +45,6 @@
             nixos-hardware.nixosModules.common-cpu-intel
             nixos-hardware.nixosModules.common-gpu-intel
             nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-            ./nixos/common.nix
-            ./nixos/hardware/trx.nix
             ./nixos/hosts/trx.nix
           ];
         };
@@ -60,8 +56,6 @@
             nixos-hardware.nixosModules.common-pc-ssd
             nixos-hardware.nixosModules.common-cpu-amd
             nixos-hardware.nixosModules.common-gpu-amd
-            ./nixos/common.nix
-            ./nixos/hardware/srv01.nix
             ./nixos/hosts/srv01.nix
           ];
         };

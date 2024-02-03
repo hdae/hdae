@@ -1,6 +1,20 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ pkgs, ... }:
 
 {
+  imports = [
+    # Hardware
+    ../hardwares/srv01.nix
+
+    # Features
+    ../features/base.nix
+    ../features/docker.nix
+    ../features/gui.nix
+    ../features/programs.nix
+
+    # Users
+    ../users/gecko.nix
+  ];
+
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 

@@ -1,25 +1,5 @@
 {
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the Budgie Desktop environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.budgie.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-
-    libinput.mouse = {
-      disableWhileTyping = true;
-    };
-  };
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -36,4 +16,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  # Flatpak
+  services.flatpak.enable = true;
 }
