@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  users.users. gecko = {
+  users.users.gecko = {
     # Zsh with starship.
     shell = pkgs.zsh;
 

@@ -1,4 +1,69 @@
 {
+
+  outputs =
+    { self
+    , nixpkgs
+    , nixos-hardware
+    , home-manager
+    }@inputs:
+    let
+
+      # Host specific configuration
+      hosts = {
+
+        # Main laptop
+        x270 = { };
+
+        # Main desktop, but portable ssd.
+        trx = { };
+
+        # Primary server
+        srv01 = { };
+
+        # Raspberry Pi 4
+        rpi01 = {
+          system = "aarch64-linux";
+        };
+      };
+
+      # Generate configuration
+      nixosConfig = hostName: config: nixpkgs.lib.nixosSystem (
+
+        # Merge input config
+        {
+
+          # Default is x86_64
+          system = config.system or "x86_64-linux";
+
+          # Load host specific modules
+          modules = [
+            { networking.hostName = hostName; }
+            ./nixos/hosts/${hostName}
+          ] ++ (config.modules or [ ]);
+
+          # Give input as specialArgs
+          specialArgs = inputs // config.inputs or { };
+        }
+      );
+
+      homeConfig = hostName: config: home-manager.lib.homeManagerConfiguration ({
+        pkgs = import nixpkgs {
+          system = config.system or "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./home ];
+      });
+    in
+    {
+
+      # NixOS Configurations
+      nixosConfigurations = nixpkgs.lib.mapAttrs nixosConfig hosts;
+
+      # User configurations
+      homeConfigurations = nixpkgs.lib.mapAttrs homeConfig hosts;
+    };
+
   inputs = {
 
     # NixOS
@@ -11,74 +76,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Disk Manager
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
+    # # Disk Manager
+    # disko.url = "github:nix-community/disko";
+    # disko.inputs.nixpkgs.follows = "nixpkgs";
   };
-
-  outputs =
-    { self
-    , nixpkgs
-    , nixos-hardware
-    , home-manager
-    , disko
-    }@inputs: {
-
-      # NixOS Configurations
-      nixosConfigurations = {
-
-        # x270
-        x270 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            nixos-hardware.nixosModules.common-pc-laptop
-            nixos-hardware.nixosModules.lenovo-thinkpad-x270
-            ./nixos/hosts/x270.nix
-          ];
-        };
-
-        # trx
-        trx = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            nixos-hardware.nixosModules.common-pc-ssd
-            nixos-hardware.nixosModules.common-cpu-intel
-            nixos-hardware.nixosModules.common-gpu-intel
-            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-            ./nixos/hosts/trx.nix
-          ];
-        };
-
-        # srv01
-        srv01 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            nixos-hardware.nixosModules.common-pc-ssd
-            nixos-hardware.nixosModules.common-cpu-amd-pstate
-            nixos-hardware.nixosModules.common-gpu-amd-sea-islands
-            ./nixos/hosts/srv01.nix
-          ];
-        };
-      };
-
-      # User configurations
-      homeConfigurations = {
-
-        # Normal user
-        gecko = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-
-          extraSpecialArgs = {
-            inherit inputs;
-          };
-
-          modules = [
-            ./home/gecko.nix
-          ];
-        };
-      };
-    };
 }

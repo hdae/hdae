@@ -1,27 +1,26 @@
-{ pkgs, ... }:
+{ pkgs, nixos-hardware, ... }:
 
 {
   imports = [
     # Hardware
-    ../hardwares/srv01.nix
+    ./hardwares.nix
+
+    # Hardware modules
+    nixos-hardware.nixosModules.common-pc-ssd
+    nixos-hardware.nixosModules.common-cpu-amd-pstate
+    nixos-hardware.nixosModules.common-gpu-amd-sea-islands
 
     # Features
-    ../features/base.nix
-    ../features/docker.nix
-    ../features/programs.nix
+    ../../features/base.nix
+    ../../features/docker.nix
+    ../../features/programs.nix
 
     # Users
-    ../users/gecko.nix
+    ../../users/gecko.nix
   ];
-
-  # Hostname
-  networking.hostName = "srv01";
 
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  # Platform
-  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Networking
   networking.firewall.allowedTCPPorts = [ ];

@@ -1,28 +1,30 @@
-{ pkgs, ... }:
+{ pkgs, nixos-hardware, ... }:
 
 {
   imports = [
     # Hardware
-    ../hardwares/trx.nix
+    ./hardwares.nix
 
-    # Features
-    ../features/base.nix
-    ../features/docker.nix
-    ../features/gui.nix
-    ../features/programs.nix
+    # Hardware modules
+    nixos-hardware.nixosModules.common-pc-ssd
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-gpu-intel
+    nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+
+    # Feature modules
+    ../../features/base
+    ../../features/budgie
+
+    # Feature
+    ../../features/docker.nix
+    ../../features/programs.nix
 
     # Users
-    ../users/gecko.nix
+    ../../users/gecko.nix
   ];
-
-  # Hostname
-  networking.hostName = "trx";
 
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  # Platform
-  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ ];

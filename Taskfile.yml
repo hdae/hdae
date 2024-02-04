@@ -36,11 +36,11 @@ tasks:
 
   build.home:
     cmds:
-      - nix run home-manager -- --flake .#gecko build
+      - nix run home-manager -- --flake .#{{.HOST}} build
 
   switch.home:
     cmds:
-      - nix run home-manager -- --flake .#gecko switch
+      - nix run home-manager -- --flake .#{{.HOST}} switch
 
   switch.all:
     deps: [update]
