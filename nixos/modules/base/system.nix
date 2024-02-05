@@ -9,7 +9,7 @@
   nixpkgs.config.allowUnfree = lib.mkDefault true;
 
   # Nix settings
-  nix.settings = lib.mkDefault {
+  nix.settings = {
 
     # Optimize nix store
     auto-optimise-store = lib.mkDefault true;
