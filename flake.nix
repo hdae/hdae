@@ -39,10 +39,10 @@
           modules = [
             { networking.hostName = hostName; }
             ./nixos/hosts/${hostName}
-          ] ++ (config.modules or [ ]);
+          ];
 
-          # Give input as specialArgs
-          specialArgs = inputs // config.inputs or { };
+          # Give inputs as specialArgs
+          specialArgs = inputs;
         }
       );
 

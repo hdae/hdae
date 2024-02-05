@@ -1,7 +1,7 @@
 {
   imports = [
     ./locale.nix
-    ./services.nix
+    ./sound.nix
     ./xorg.nix
   ];
 }

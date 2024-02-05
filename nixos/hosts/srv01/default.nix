@@ -3,15 +3,17 @@
 {
   imports = [
     # Hardware
-    ./hardwares.nix
+    ./hardware.nix
 
     # Hardware modules
     nixos-hardware.nixosModules.common-pc-ssd
     nixos-hardware.nixosModules.common-cpu-amd-pstate
     nixos-hardware.nixosModules.common-gpu-amd-sea-islands
 
+    # Modules
+    ../../modules/base
+
     # Features
-    ../../features/base.nix
     ../../features/docker.nix
     ../../features/programs.nix
 
@@ -22,9 +24,11 @@
   # Use zen kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Networking
+  # Firewall
   networking.firewall.allowedTCPPorts = [ ];
   networking.firewall.allowedUDPPorts = [ ];
+
+  # Networking
   networking.useDHCP = false;
   networking.interfaces.enp9s0 = {
     useDHCP = false;
