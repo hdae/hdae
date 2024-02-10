@@ -5,10 +5,6 @@
   # Don't change.
   system.stateVersion = "23.11";
 
-  # Bootloader
-  boot.loader.systemd-boot.enable = lib.mkDefault true;
-  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
-
   # Set your time zone.
   time.timeZone = lib.mkDefault "Asia/Tokyo";
 

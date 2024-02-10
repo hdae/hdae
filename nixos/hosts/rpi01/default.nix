@@ -12,7 +12,6 @@
     ../../features/base.nix
     ../../features/docker.nix
     ../../features/shell.nix
-    ../../features/flatpak.nix
 
     # Users
     ../../users/gecko.nix
