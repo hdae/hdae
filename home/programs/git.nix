@@ -1,4 +1,6 @@
-{
+{ pkgs, ... }: {
+
+  # 
   programs = {
 
     # Git
@@ -17,9 +19,12 @@
       };
     };
 
-    # Configure GitHub CLI
+    # GitHub CLI
     gh = {
       enable = true;
     };
   };
+
+  # Ghq
+  home.packages = with pkgs; [ ghq ];
 }

@@ -18,42 +18,42 @@
         trx = { };
 
         # Primary server
-        srv01 = { };
+        srv01 = {
+          homeModules = [ ./home/minimal.nix ];
+        };
 
         # Raspberry Pi 4
         rpi01 = {
           system = "aarch64-linux";
+          homeModules = [ ./home/minimal.nix ];
         };
       };
 
-      # Generate configuration
-      nixosConfig = hostName: config: nixpkgs.lib.nixosSystem (
+      # Generate nixos configuration
+      nixosConfig = hostName: config: nixpkgs.lib.nixosSystem {
 
-        # Merge input config
-        {
+        # Default is x86_64
+        system = config.system or "x86_64-linux";
 
-          # Default is x86_64
-          system = config.system or "x86_64-linux";
+        # Load host specific modules
+        modules = [
+          { networking.hostName = hostName; }
+          ./nixos/hosts/${hostName}
+        ];
 
-          # Load host specific modules
-          modules = [
-            { networking.hostName = hostName; }
-            ./nixos/hosts/${hostName}
-          ];
+        # Give inputs as specialArgs
+        specialArgs = inputs;
+      };
 
-          # Give inputs as specialArgs
-          specialArgs = inputs;
-        }
-      );
-
-      homeConfig = hostName: config: home-manager.lib.homeManagerConfiguration ({
+      # Generate home configuration
+      homeConfig = hostName: config: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = config.system or "x86_64-linux";
           config.allowUnfree = true;
         };
         extraSpecialArgs = { inherit inputs; };
-        modules = [ ./home ];
-      });
+        modules = config.homeModules or [ ./home/desktop.nix ];
+      };
     in
     {
 
