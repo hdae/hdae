@@ -12,20 +12,27 @@
       hosts = {
 
         # Main laptop
-        x270 = { };
+        x270 = {
+          features = [
+            ./home/desktop.nix
+            ./home/develop.nix
+          ];
+        };
 
         # Main desktop, but portable ssd.
-        trx = { };
+        trx = {
+          features = [
+            ./home/desktop.nix
+            ./home/develop.nix
+          ];
+        };
 
         # Primary server
-        srv01 = {
-          homeModules = [ ./home/minimal.nix ];
-        };
+        srv01 = { };
 
         # Raspberry Pi 4
         rpi01 = {
           system = "aarch64-linux";
-          homeModules = [ ./home/minimal.nix ];
         };
       };
 
@@ -50,9 +57,12 @@
         pkgs = import nixpkgs {
           system = config.system or "x86_64-linux";
           config.allowUnfree = true;
+          overlays = [
+            (import inputs.rust-overlay)
+          ];
         };
         extraSpecialArgs = { inherit inputs; };
-        modules = config.homeModules or [ ./home/desktop.nix ];
+        modules = [ ./home/minimal.nix ] ++ config.features or [ ];
       };
     in
     {
@@ -79,5 +89,8 @@
     # # Disk Manager
     # disko.url = "github:nix-community/disko";
     # disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Rust overlay
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 }

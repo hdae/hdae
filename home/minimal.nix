@@ -7,9 +7,7 @@ in
 
   # Programs
   imports = [
-    ./programs/devbox.nix
     ./programs/git.nix
-    ./programs/volta.nix
     ./programs/zsh.nix
   ];
 
@@ -19,17 +17,16 @@ in
     # CLI Tools
     go-task
     htop
-
-    # Nix Tools
-    nil
-    nixpkgs-fmt
-
-    # Runtime
-    deno
   ];
 
-  # Enable home-manager.
-  programs.home-manager.enable = true;
+  programs = {
+
+    # Enable home-manager.
+    home-manager.enable = true;
+
+    # Enable nix-ld.
+    nix-ld.enable = true;
+  };
 
   # Home directory
   home = {
