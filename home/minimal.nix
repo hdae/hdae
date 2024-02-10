@@ -17,6 +17,7 @@ in
     # CLI Tools
     go-task
     htop
+    unar
   ];
 
   programs = {
