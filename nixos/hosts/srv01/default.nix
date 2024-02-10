@@ -12,6 +12,7 @@
 
     # Features
     ../../features/base.nix
+    ../../features/binary.nix
     ../../features/boot.nix
     ../../features/docker.nix
     ../../features/shell.nix

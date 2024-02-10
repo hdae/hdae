@@ -13,13 +13,13 @@
 
     # Feature
     ../../features/base.nix
+    ../../features/binary.nix
     ../../features/boot.nix
     ../../features/budgie.nix
-    ../../features/appimage.nix
     ../../features/docker.nix
-    ../../features/shell.nix
-    ../../features/nvidia.nix
     ../../features/flatpak.nix
+    ../../features/nvidia.nix
+    ../../features/shell.nix
 
     # Users
     ../../users/gecko.nix

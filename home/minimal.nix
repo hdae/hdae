@@ -23,9 +23,6 @@ in
 
     # Enable home-manager.
     home-manager.enable = true;
-
-    # Enable nix-ld.
-    nix-ld.enable = true;
   };
 
   # Home directory

@@ -5,6 +5,7 @@
     , nixpkgs
     , nixos-hardware
     , home-manager
+    , rust-overlay
     }@inputs:
     let
 
