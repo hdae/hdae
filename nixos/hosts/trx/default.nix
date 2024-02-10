@@ -11,15 +11,14 @@
     nixos-hardware.nixosModules.common-gpu-intel
     nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
 
-    # Modules
-    ../../modules/base
-    ../../modules/budgie
-
     # Feature
+    ../../features/base.nix
+    ../../features/budgie.nix
     ../../features/appimage.nix
     ../../features/docker.nix
-    ../../features/programs.nix
+    ../../features/shell.nix
     ../../features/nvidia.nix
+    ../../features/flatpak.nix
 
     # Users
     ../../users/gecko.nix

@@ -2,11 +2,6 @@
 
 {
 
-  # Additional packages
-  environment.systemPackages = with pkgs; [
-    home-manager
-  ];
-
   # Minimal programs for system management.
   programs = {
 

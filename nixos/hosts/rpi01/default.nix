@@ -6,9 +6,7 @@
     ./hardware.nix
 
     # Hardware modules
-    nixos-hardware.nixosModules.common-pc-ssd
-    nixos-hardware.nixosModules.common-cpu-amd-pstate
-    nixos-hardware.nixosModules.common-gpu-amd-sea-islands
+    nixos-hardware.nixosModules.raspberry-pi-4
 
     # Features
     ../../features/base.nix
@@ -21,7 +19,7 @@
   ];
 
   # Use zen kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ ];
@@ -29,11 +27,11 @@
 
   # Networking
   networking.useDHCP = false;
-  networking.interfaces.enp9s0 = {
+  networking.interfaces.end0 = {
     useDHCP = false;
-    wakeOnLan.enable = true;
+    # wakeOnLan.enable = true;
     ipv4.addresses = [{
-      address = "10.10.1.10";
+      address = "10.10.1.11";
       prefixLength = 16;
     }];
   };

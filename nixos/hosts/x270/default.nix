@@ -10,13 +10,12 @@
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.lenovo-thinkpad-x270
 
-    # Modules
-    ../../modules/base
-    ../../modules/budgie
-
     # Features
+    ../../features/base.nix
+    ../../features/budgie.nix
     ../../features/docker.nix
-    ../../features/programs.nix
+    ../../features/shell.nix
+    ../../features/flatpak.nix
 
     # Users
     ../../users/gecko.nix
