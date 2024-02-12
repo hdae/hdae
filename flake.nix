@@ -29,7 +29,11 @@
         };
 
         # Primary server
-        srv01 = { };
+        srv01 = {
+          features = [
+            ./home/develop.nix
+          ];
+        };
 
         # Raspberry Pi 4
         rpi01 = {
