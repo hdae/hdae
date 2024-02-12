@@ -12,7 +12,9 @@
 
     # Rust
     clang
-    rust-bin.stable.latest.default
+    (rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" ];
+    })
 
     # Nix
     nil

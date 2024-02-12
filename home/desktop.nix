@@ -8,8 +8,10 @@
 
   home.packages = with pkgs; [
     discord
-    vscode-fhs
+    gimp
     google-chrome
+    vscode-fhs
     wezterm
+    wireshark
   ];
 }
