@@ -1,32 +1,10 @@
-{ pkgs, ... }: {
+{
 
-  # Programs
+  # Features
   imports = [
-
-    # Node.js
+    ./programs/deno.nix
+    ./programs/nix.nix
+    ./programs/rust.nix
     ./programs/volta.nix
   ];
-
-  # Packages
-  home.packages = with pkgs; [
-
-    # Rust
-    clang
-    (rust-bin.stable.latest.default.override {
-      extensions = [ "rust-src" ];
-    })
-
-    # Nix
-    nil
-    nixpkgs-fmt
-
-    # TypeScript
-    deno
-  ];
-
-  home.sessionVariables = {
-
-    # Rust: https://github.com/rust-lang/rust-bindgen#environment-variables
-    LIBCLANG_PATH = pkgs.lib.makeLibraryPath [ pkgs.llvmPackages_latest.libclang.lib ];
-  };
 }

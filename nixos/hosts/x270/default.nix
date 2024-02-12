@@ -28,5 +28,5 @@
 
   # Firewall
   networking.firewall.allowedTCPPorts = [ ];
-  networking.firewall.allowedUDPPorts = [ ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
 }
