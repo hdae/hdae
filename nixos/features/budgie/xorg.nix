@@ -15,12 +15,12 @@
       layout = "us";
       variant = "";
     };
+  };
 
-    # Mouse and Touchpad
-    libinput.mouse = {
+  # Mouse and Touchpad
+  services.libinput.mouse = {
 
-      # Disable touchpad when typing.
-      disableWhileTyping = true;
-    };
+    # Disable touchpad when typing.
+    disableWhileTyping = true;
   };
 }

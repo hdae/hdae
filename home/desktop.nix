@@ -13,5 +13,7 @@
     vscode-fhs
     wezterm
     wireshark
+    keepassxc
+    bambu-studio
   ];
 }
